@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mars Rover Mission Control</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>🚀 Mars Rover Mission Control</h1>
+            <p>Navigate your rover through the Martian terrain!</p>
+        </header>
+
+        <main>
+            <div class="controls-section">
+
+                <div class="rover-status">
+                    <h2>Rover Status</h2>
+                    <div class="status-info">
+                        <div class="status-item">
+                            <span class="label">Position:</span>
+                            <span id="position">(0, 0)</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="label">Direction:</span>
+                            <span id="direction">North ⬆️</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="command-input">
+                    <h2>Mission Commands</h2>
+                    <div class="input-group">
+                        <input 
+                            type="text" 
+                            id="commandInput" 
+                            placeholder="Enter commands (f=forward, b=backward, l=left, r=right)"
+                            value="rffrfflfrff"
+                        >
+                        <button id="executeBtn">Execute Mission</button>
+                    </div>
+                    <div class="command-help">
+                        <strong>Commands:</strong> f=forward, b=backward, l=turn left, r=turn right
+                    </div>
+                </div>
+
+                <div class="manual-controls">
+                    <h2>Manual Controls</h2>
+                    <div class="control-flex">
+                        <div class="control-row">
+                            <button id="turnLeftBtn" class="control-btn">↺ Turn Left</button>
+                            <button id="forwardBtn" class="control-btn">⬆ Forward</button>
+                            <button id="turnRightBtn" class="control-btn">↻ Turn Right</button>
+                        </div>
+                        <div class="control-row">
+                            <button id="backwardBtn" class="control-btn">⬇ Backward</button>
+                            <button id="resetBtn" class="control-btn reset">🔄 Reset</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="obstacle-controls">
+                    <h2>Obstacle Management</h2>
+                    <div class="obstacle-buttons">
+                        <button id="generateObstaclesBtn" class="control-btn">🗿 Generate Obstacles</button>
+                        <button id="clearObstaclesBtn" class="control-btn">🧹 Clear Obstacles</button>
+                    </div>
+                    <div class="obstacle-info">
+                        <span class="label">Obstacles on map:</span>
+                        <span id="obstacleCount">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-section">
+                <div class="grid-title-container">
+                    <h2>Mars Grid (10x10)</h2>
+                </div>
+                <div id="marsGrid" class="mars-grid"></div>
+            </div>
+        </main>
+
+        <div class="log-section">
+            <h2>Mission Log</h2>
+            <div id="missionLog" class="mission-log"></div>
+            <button id="clearLogBtn" class="clear-log-btn">Clear Log</button>
+        </div>
+
+        <div class="travel-log-section">
+            <h2>Travel History</h2>
+            <div id="travelLog" class="travel-log"></div>
+        </div>
+    </div>
+
+    <script src=""></script>
+</body>
+</html>
