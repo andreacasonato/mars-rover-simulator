@@ -1,0 +1,495 @@
+/* =========================================================
+   GLOBAL RESET & BASE STYLES
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    color: #ffffff;
+    min-height: 100vh;
+    padding: 40px 20px;
+}
+
+/* =========================================================
+   LAYOUT: CONTAINER & MAIN SECTIONS
+   ========================================================= */
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    background: linear-gradient(45deg, #ff6b35, #f7931e, #ff6b35);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 20px rgba(255, 107, 53, 0.3);
+}
+
+header p {
+    font-size: 1.1rem;
+    color: #cccccc;
+}
+
+/* =========================================================
+   MAIN LAYOUT
+   ========================================================= */
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.controls-section {
+    flex: 1;
+    min-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* =========================================================
+   ROVER STATUS PANEL
+   ========================================================= */
+
+.rover-status {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.rover-status h2 {
+    margin-bottom: 12px;
+    color: #ff6b35;
+    font-size: 1.2rem;
+}
+
+.status-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.status-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+}
+
+.label {
+    font-weight: bold;
+    color: #cccccc;
+}
+
+#position,
+#direction {
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    color: #4ade80;
+}
+
+/* =========================================================
+   COMMAND INPUT SECTION
+   ========================================================= */
+
+.command-input {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.command-input h2 {
+    margin-bottom: 15px;
+    color: #ff6b35;
+    font-size: 1.3rem;
+}
+
+.input-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+#commandInput {
+    flex: 1;
+    padding: 12px 16px;
+    border: none;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    font-size: 1rem;
+    font-family: 'Courier New', monospace;
+}
+
+#commandInput::placeholder {
+    color: #aaaaaa;
+}
+
+#executeBtn {
+    padding: 12px 24px;
+    background: linear-gradient(45deg, #ff6b35, #f7931e);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+#executeBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 107, 53, 0.4);
+}
+
+.command-help {
+    font-size: 0.9rem;
+    color: #cccccc;
+    font-style: italic;
+}
+
+/* =========================================================
+   MANUAL CONTROLS & OBSTACLE CONTROLS
+   ========================================================= */
+
+.manual-controls,
+.obstacle-controls {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.manual-controls h2,
+.obstacle-controls h2 {
+    margin-bottom: 15px;
+    color: #ff6b35;
+    font-size: 1.3rem;
+}
+
+/* Buttons grid */
+.control-flex {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.control-row {
+    display: flex;
+    gap: 10px;
+}
+
+/* Generic control button */
+.control-btn {
+    flex: 1;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    min-height: 48px;
+}
+
+.control-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-1px);
+}
+
+/* Reset button highlight */
+.control-btn.reset {
+    background: linear-gradient(45deg, #dc2626, #ef4444);
+}
+
+.control-btn.reset:hover {
+    background: linear-gradient(45deg, #b91c1c, #dc2626);
+}
+
+/* =========================================================
+   MARS GRID
+   ========================================================= */
+
+.grid-section {
+    flex: 1;
+    min-width: 450px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.grid-title-container {
+    width: 450px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.grid-section h2 {
+    color: #ff6b35;
+    font-size: 1.3rem;
+}
+
+.mars-grid {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    gap: 3px;
+    background: #1a1a2e;
+    padding: 12px;
+    border-radius: 15px;
+    width: 450px;
+    height: 450px;
+    border: 2px solid rgba(255, 107, 53, 0.3);
+}
+
+/* Grid cells */
+.grid-cell {
+    background: linear-gradient(135deg, #8b4513, #a0522d);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+/* Rover cell */
+.grid-cell.rover {
+    background: linear-gradient(135deg, #4ade80, #22c55e);
+    box-shadow: 0 0 15px rgba(74, 222, 128, 0.5);
+    animation: pulse 2s infinite;
+}
+
+/* Visited path */
+.grid-cell.visited {
+    background: linear-gradient(135deg, #fbbf24, #f59e0b);
+    opacity: 0.7;
+}
+
+/* Obstacle cell */
+.grid-cell.obstacle {
+    background: linear-gradient(135deg, #6b7280, #4b5563);
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+.grid-cell.obstacle::before {
+    content: '🗿';
+    font-size: 1.3rem;
+    filter: grayscale(1);
+}
+
+/* Obstacle buttons & info */
+.obstacle-buttons {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.obstacle-buttons .control-btn {
+    flex: 1;
+}
+
+.obstacle-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+}
+
+#obstacleCount {
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    color: #6b7280;
+}
+
+/* Rover animation */
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+
+/* =========================================================
+   LOGS & TRAVEL HISTORY
+   ========================================================= */
+
+.log-section,
+.travel-log-section {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.log-section h2,
+.travel-log-section h2 {
+    margin-bottom: 15px;
+    color: #ff6b35;
+    font-size: 1.3rem;
+}
+
+.mission-log,
+.travel-log {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    padding: 15px;
+    max-height: 200px;
+    overflow-y: auto;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+/* Log entries */
+.log-entry {
+    margin-bottom: 8px;
+    padding: 5px 8px;
+    border-radius: 4px;
+}
+
+.log-entry.command {
+    color: #60a5fa;
+    background: rgba(96, 165, 250, 0.1);
+}
+
+.log-entry.move {
+    color: #4ade80;
+    background: rgba(74, 222, 128, 0.1);
+}
+
+.log-entry.turn {
+    color: #fbbf24;
+    background: rgba(251, 191, 36, 0.1);
+}
+
+.log-entry.error {
+    color: #f87171;
+    background: rgba(248, 113, 113, 0.1);
+}
+
+.log-entry.info {
+    color: #a78bfa;
+    background: rgba(167, 139, 250, 0.1);
+}
+
+/* Clear log button */
+.clear-log-btn {
+    margin-top: 10px;
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.clear-log-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Travel history entries */
+.travel-log {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.travel-entry {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 8px;
+    border-radius: 6px;
+    text-align: center;
+    font-size: 0.8rem;
+    color: #fbbf24;
+    min-width: 80px;
+}
+
+/* =========================================================
+   RESPONSIVE DESIGN
+   ========================================================= */
+@media (max-width: 968px) {
+    main {
+        flex-direction: column;
+    }
+
+    .controls-section,
+    .grid-section {
+        min-width: 100%;
+    }
+
+    .grid-title-container,
+    .mars-grid {
+        width: 100%;
+        max-width: 450px;
+    }
+
+    .mars-grid {
+        height: auto;
+        aspect-ratio: 1/1;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 20px 15px;
+    }
+
+    .container {
+        padding: 0 15px;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .control-row {
+        flex-wrap: wrap;
+    }
+
+    .control-btn {
+        min-width: 120px;
+    }
+
+    .travel-log {
+        justify-content: center;
+    }
+}
