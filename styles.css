@@ -14,6 +14,10 @@ body {
     color: #ffffff;
     min-height: 100vh;
     padding: 40px 20px;
+    background-image:
+        linear-gradient(rgba(84, 64, 64, 0.4), rgba(0, 0, 0, 0.4)),
+        url("mars-background.webp");
+    background-size: cover;
 }
 
 /* =========================================================
