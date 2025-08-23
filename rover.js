@@ -23,3 +23,43 @@ const directionMap = {
 // DOM elements: These variables will hold references to the HTML elements
 // Placing these references at the start in order to make our code cleaner and more efficient.
 let positionElement, directionElement, missionLogElement, travelLogElement, marsGrid, obstacleCountElement;
+
+// Initialize when DOM is loaded.
+// We wait for the 'DOMContentLoaded' event to fire, which ensures that all
+// of our HTML elements are available and ready to be manipulated by JavaScript.
+document.addEventListener('DOMContentLoaded', function () {
+    // Get references to all the necessary HTML elements using their unique IDs.
+    // The getElementById() method is a fast and simple way to do this.
+    positionElement = document.getElementById('position');
+    directionElement = document.getElementById('direction');
+    missionLogElement = document.getElementById('missionLog');
+    travelLogElement = document.getElementById('travelLog');
+    marsGrid = document.getElementById('marsGrid');
+    obstacleCountElement = document.getElementById('obstacleCount');
+
+    // After getting the elements, we'll initialize the Mars grid.
+    initializeMarsGrid();
+});
+
+// Function to initialize and draw the Mars grid.
+function initializeMarsGrid() {
+    // Clear any existing content in the grid container.
+    // This is important for when we might need to "reset" the grid later.
+    marsGrid.innerHTML = '';
+
+    // Loop through each row (y-coordinate)
+    for (let y = 0; y < 10; y++) {
+        // Loop through each column (x-coordinate)
+        for (let x = 0; x < 10; x++) {
+            // Create a new div element for each cell.
+            const cell = document.createElement('div');
+            // Add a class for styling.
+            cell.classList.add('grid-cell');
+            // Set a unique ID for each cell based on its coordinates.
+            // This makes it easy to find a specific cell later.
+            cell.id = `cell-${x}-${y}`;
+            // Append the new cell to the main grid container.
+            marsGrid.appendChild(cell);
+        }
+    }
+}
