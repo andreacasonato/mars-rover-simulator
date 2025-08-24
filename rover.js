@@ -63,3 +63,25 @@ function initializeMarsGrid() {
         }
     }
 }
+
+// Function to update the UI based on the rover's current state.
+// This is a central function we'll call whenever the rover's state changes.
+function updateUI() {
+    // Update the position display. We use a template literal for easy formatting.
+    positionElement.textContent = `(${rover.x}, ${rover.y})`;
+
+    // Update the direction display using the directionMap for the emoji and name.
+    directionElement.innerHTML = `${directionMap[rover.direction].name} ${directionMap[rover.direction].emoji}`;
+
+    // Remove the 'rover' class from the previous position.
+    // This ensures we only have one rover on the map at a time.
+    const allCells = document.querySelectorAll('.grid-cell.rover');
+    allCells.forEach(cell => cell.classList.remove('rover'));
+
+    // Add the 'rover' class to the rover's current cell.
+    // This will apply the CSS styling to show the rover's icon.
+    const currentCell = document.getElementById(`cell-${rover.x}-${rover.y}`);
+    if (currentCell) {
+        currentCell.classList.add('rover');
+    }
+}
